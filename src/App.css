@@ -1,0 +1,15 @@
+@import '~antd/dist/antd.css';
+.App {
+  text-align: center;
+}
+
+.mr-15 {
+  margin-right: 15px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+.ant-select-selection-placeholder {
+  color: unset;
+}

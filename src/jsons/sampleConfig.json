@@ -1,0 +1,29 @@
+{
+  "upload_file_types": [
+    "csv"
+  ],
+  "operations": {
+    "wc": {
+      "description": "displays the number of lines, words, and bytes contained in each input file",
+      "parameters": [
+        {
+          "flag": "-l",
+          "description": "The number of lines in each input file is written to the standard output"
+        }
+      ]
+    },
+    "head": {
+      "description": "display first lines of a file",
+      "parameters": [
+        {
+          "flag": "-n",
+          "description": "number of lines to display",
+          "type": "integer",
+          "integer_range": [
+            1
+          ]
+        }
+      ]
+    }
+  }
+}

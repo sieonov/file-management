@@ -1,0 +1,152 @@
+{
+  "description": "web playground page: configuration object and result data schemas",
+  "type": "object",
+  "required": [
+    "upload_file_types",
+    "operations"
+  ],
+  "properties": {
+    "upload_file_types": {
+      "description": "file extensions that can be uploaded",
+      "type": "array",
+      "items": {
+        "enum": [
+          "json",
+          "txt",
+          "tsv",
+          "csv",
+          "xlsx"
+        ]
+      }
+    },
+    "operations": {
+      "type": "object",
+      "description": "each key is the operation id",
+      "additionalProperties": {
+        "$ref": "#/definitions/operation"
+      }
+    }
+  },
+  "definitions": {
+    "operation": {
+      "type": "object",
+      "required": [
+        "parameters"
+      ],
+      "properties": {
+        "description": {
+          "description": "description of this operation",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/parameter"
+          }
+        }
+      }
+    },
+    "parameter": {
+      "description": "parameter to an operation",
+      "type": "object",
+      "required": [
+        "description"
+      ],
+      "properties": {
+        "flag": {
+          "description": "flag, if any, to pass on to operation preceding this parameter value",
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "none",
+            "string",
+            "integer",
+            "filename",
+            "new_filename"
+          ]
+        },
+        "integer_range": {
+          "description": "if type == integer, the low / high values that are acceptable",
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        },
+        "enum": {
+          "type": "array",
+          "description": "a predefined list of values for this parameter"
+        },
+        "nullable": {
+          "description": "whether this parameter can be blank/null",
+          "type": "boolean"
+        },
+        "default_value": {
+          "type": "string"
+        }
+      }
+    },
+    "operation_result": {
+      "description": "data that an operation will return",
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        },
+        "table_location": {
+          "type": "string",
+          "description": "location in the file system of a table of data (e.g. csv) that should be displayed in the result area"
+        },
+        "table_data": {
+          "$ref": "#/definitions/table_data"
+        }
+      }
+    },
+    "table_data": {
+      "description": "table of data",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/header_row"
+      },
+      "additionalItems": {
+        "$ref": "#/definitions/data_row",
+      }
+    },
+    "header_row": {
+      "description": "this will probably change to allow an object that specifies data type etc-- but for now go with this",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/scalar"
+      }
+    },
+    "data_row": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/scalar"
+      }
+    },
+    "scalar": {
+      "nullable": true,
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        }
+      ]
+    }
+  }
+}
