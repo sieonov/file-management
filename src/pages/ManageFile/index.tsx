@@ -73,31 +73,38 @@ const ManagerFile = (props: any) => {
   return (
     <StyledManageFile>
       <Row className="header" gutter={16}>
-        <Col span={8}>
-          <Upload {...fileProps}>
-            <Button type="primary">Upload a file</Button>
-          </Upload>
-          <InputSelect
-            className="mt-2"
-            placeholder={'Select a file:'}
-            mode={'multiple'}
-            options={uploadFiles}
-            onChange={handChangeSelectFile}
-            >
-          </InputSelect>
+        <Col span={16}>
+          <Row>
+            <Col span={24}>
+              <Upload {...fileProps}>
+                <Button type="primary">Upload a file</Button>
+              </Upload>
+            </Col>
+          </Row>
+          <Row gutter={16} className="mt-4">
+            <Col span={12}>
+              <InputSelect
+                placeholder={'Select a file:'}
+                mode={'multiple'}
+                options={uploadFiles}
+                onChange={handChangeSelectFile}
+                >
+              </InputSelect>
+            </Col>
+            <Col span={12}>
+              <InputSelect
+                placeholder={'Select an action:'}
+                options={actionOptions}
+                onChange={handChangeAction}
+                >
+              </InputSelect>
+            </Col>
+          </Row>
         </Col>
-        <Col span={8}>
-          <InputSelect
-            placeholder={'Select an action:'}
-            options={actionOptions}
-            onChange={handChangeAction}
-            >
-          </InputSelect>
-        </Col>
-        <Col span={8} className="configured"></Col>
+        <Col span={8} className="configured"><span>Selected action parameters are chosen / configured here</span></Col>
       </Row>
       <Row className="body" gutter={16}>
-        <Col span={24}></Col>
+        <Col span={24}>Action result goes here(message or table)</Col>
       </Row>
     </StyledManageFile>
   );

@@ -7,7 +7,7 @@ import { StyledSideBar } from './styled';
 function SideBar() {
   return (
     <StyledSideBar>
-      <li className="name-app">File uploader</li>
+      <li className="name-app">File Management</li>
       <li>
         <NavLink exact to="/">Uploader</NavLink>
       </li>

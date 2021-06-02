@@ -6,7 +6,7 @@ export const StyledSideBar = styled.ul`
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 200px;
+  width: 250px;
   top: 0;
   left: 0;
   border-right: 1px solid rgb(220, 224, 233);
@@ -21,7 +21,6 @@ export const StyledSideBar = styled.ul`
   justify-content: left;
 
   .name-app {
-    text-transform: uppercase;
     font-size: 20px;
   }
 

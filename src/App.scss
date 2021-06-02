@@ -1,4 +1,7 @@
 @import '~antd/dist/antd.css';
+
+$spacer: 8px;
+
 .App {
   text-align: center;
 }
@@ -7,9 +10,10 @@
   margin-right: 15px;
 }
 
-.mt-2 {
-  margin-top: 20px;
+@for $i from 0 through 5 {
+  .mt-#{$i} { margin-top: $spacer * $i; }
 }
+
 .ant-select-selection-placeholder {
   color: unset;
 }

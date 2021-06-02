@@ -4,7 +4,7 @@ import {
   Route, Switch
 } from 'react-router-dom';
 import { ToastProvider } from 'react-toast-notifications';
-import './App.css';
+import './App.scss';
 import SideBar from './components/SideBar/index';
 import ManagerFile from './pages/ManageFile';
 import { StyledMainContent } from './styled';
