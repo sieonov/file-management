@@ -5,9 +5,7 @@ const { Option } = Select;
 
 const InputSelect = (props: any) => {
   const {
-    // type,
-    // name,
-    // value,
+    value,
     mode={undefined},
     options = [],
     placeholder,
@@ -16,6 +14,7 @@ const InputSelect = (props: any) => {
     onBlur,
     onSearch,
     className,
+    disabled,
     isDefault = false,
   } = props;
 
@@ -31,6 +30,8 @@ const InputSelect = (props: any) => {
       onFocus={onFocus}
       onBlur={onBlur}
       onSearch={onSearch}
+      disabled={disabled}
+      value={value || undefined}
       // filterOption={(input, option) =>
       //   option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
       // }

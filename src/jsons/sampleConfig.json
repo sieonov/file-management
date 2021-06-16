@@ -9,6 +9,10 @@
         {
           "flag": "-l",
           "description": "The number of lines in each input file is written to the standard output"
+        },
+        {
+          "flag": "-c",
+          "description": "The bytes length of each input file"
         }
       ]
     },

@@ -1,28 +1,35 @@
 import styled from 'styled-components';
 
 export const StyledManageFile = styled.div`
+  padding: 50px 30px;
   .header {
     height: 200px;
   }
-  .header div.configured {
+  .configured {
     height: 190px;
-    background-color: rgb(13, 240, 62);
-    text-align: center;
+    background-color: #d9f7be;
     font-size: 1rem;
     font-weight: 600;
     color: white;
-    line-height: 190px;
+    border-radius: 10px;
   }
-  .header div.configured span {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
+
+  .execute-btn {
+    min-width: 100px;
   }
-  .body {
-    background-color: rgb(29, 26, 243);
+  
+  .results {
+    background-color: #69c0ff;
+    margin-top: 30px;
     padding: 3rem 2rem;
     font-size: 1rem;
     font-weight: 600;
     color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    h3 {
+      color: #000;
+    }
   }
 `;
