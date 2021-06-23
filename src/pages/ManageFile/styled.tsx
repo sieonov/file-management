@@ -2,8 +2,14 @@ import styled from 'styled-components';
 
 export const StyledManageFile = styled.div`
   padding: 50px 30px;
-  .header {
-    height: 200px;
+  .config-area {
+    .file {
+      min-height: 200px;
+      max-height: 400px;
+      overflow: auto;
+      border: 1px solid #eee;
+      padding: 16px;
+    }
   }
   .configured {
     height: 190px;
@@ -14,8 +20,11 @@ export const StyledManageFile = styled.div`
     border-radius: 10px;
   }
 
-  .execute-btn {
-    min-width: 100px;
+  .execute-wrap {
+    .execute-btn {
+      min-width: 100px;
+      margin-left: auto;
+    }
   }
   
   .results {
