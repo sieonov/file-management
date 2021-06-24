@@ -6,7 +6,7 @@ import { InputSelect } from '../../components/Inputs';
 import configData from '../../jsons/sampleConfig.json';
 import { write_file_from_input } from '../../helpers/utils';
 import { StyledManageFile } from './styled';
-import { OPERATIONS_KEY, PARAMETERS_KEY, SOMETHING_WRONG } from '../../constant';
+import { OPERATIONS_KEY, PARAMETERS_KEY, SOMETHING_WRONG, MAX_INPUT_COUNT } from '../../constant';
 import { IParameter } from '../../helpers/types';
 
 interface ISelect {
@@ -144,14 +144,21 @@ const ManagerFile = (props: any) => {
       return;
     }
 
-    // To do: check if multiple files are allowed
+    const minInputCount = get(configData, `${OPERATIONS_KEY}.${actionName}.min_input_count`) || 1;
+    const maxInputCount = get(configData, `${OPERATIONS_KEY}.${actionName}.max_input_count`)
+      || (minInputCount === 1 ? 1 : MAX_INPUT_COUNT);
+
+    if (minInputCount > selectedFile.length || maxInputCount < selectedFile.length) {
+      addToast('The number of files are out of a given range.', { appearance: 'error' });
+      return;
+    }
 
     try {
       const actionFunc = require(`../../helpers/${actionName}`);
 
       setIsLoading(true);
       // check if multiple files are allowed to pass
-      set(selectedConfigData, 'inputFile', selectedFile[0]);
+      set(selectedConfigData, 'inputFile', selectedFile);
       const configParam = {
         ...selectedConfigData,
         description: JSON.parse(get(selectedConfigData, 'description-flag')).description,

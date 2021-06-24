@@ -14,7 +14,9 @@
           "flag": "-c",
           "description": "The bytes length of each input file"
         }
-      ]
+      ],
+      "min_input_count": 1,
+      "max_input_count": 2
     },
     "head": {
       "description": "display first lines of a file",

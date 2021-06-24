@@ -1,4 +1,4 @@
-import { get } from 'lodash';
+import { get, isEmpty } from 'lodash';
 import { SOMETHING_WRONG } from '../constant';
 import { IArgType, cbType } from './types';
 
@@ -20,8 +20,8 @@ const wc = async (args: IArgType, cb?: cbType) => {
     return;
   }
 
-  input_file = get(args, 'inputFile');
-  if (!input_file) {
+  input_file = get(args, 'inputFile.0');
+  if (isEmpty(input_file)) {
     fail && fail({ message: 'Please select a file' });
     return;
   }

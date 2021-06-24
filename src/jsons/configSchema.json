@@ -31,6 +31,8 @@
     "operation": {
       "type": "object",
       "required": [
+        "min_input_count",
+        "max_input_count",
         "parameters"
       ],
       "properties": {
@@ -40,6 +42,12 @@
         },
         "name": {
           "type": "string"
+        },
+        "min_input_count": {
+          "type": "integer"
+        },
+        "max_input_count": {
+          "type": "integer"
         },
         "parameters": {
           "type": "array",
